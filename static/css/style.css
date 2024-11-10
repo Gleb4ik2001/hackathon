@@ -1,0 +1,86 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f2f5;
+    color: #333;
+}
+
+header {
+    background-color: #4CAF50;
+    color: white;
+    padding: 1em;
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+#filters {
+    padding: 1em;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    margin: 20px auto;
+    width: 90%;
+    max-width: 600px;
+    border-radius: 8px;
+}
+
+#filters label {
+    display: block;
+    margin: 1em 0;
+    font-weight: bold;
+}
+
+#filters input[type="range"] {
+    width: 100%;
+}
+
+#filters button {
+    width: 100%;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+#filters button:hover {
+    background-color: #45a049;
+}
+
+#resumes {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+.resume {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: calc(100% / 2 - 20px);
+    max-width: 300px;
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.resume:hover {
+    transform: scale(1.05);
+}
+
+.resume h3 {
+    margin-top: 0;
+    color: #4CAF50;
+    font-size: 20px;
+}
+
+.resume p {
+    margin: 5px 0;
+}

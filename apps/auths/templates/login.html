@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вход в систему</title>
+    <style>
+        /* Общий стиль для центрации и фона */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f4f3;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Контейнер формы */
+        .login-container {
+            width: 100%;
+            max-width: 400px;
+            background-color: #ffffff;
+            padding: 2em;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Заголовок */
+        .login-container h2 {
+            margin: 0 0 1em;
+            color: #2d6a4f;
+            text-align: center;
+        }
+
+        /* Стили для формы */
+        .login-form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .login-form label {
+            margin: 0.5em 0 0.2em;
+            color: #333333;
+        }
+
+        .login-form input {
+            padding: 0.8em;
+            margin-bottom: 1em;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+        }
+
+        .login-form input[type="email"],
+        .login-form input[type="password"] {
+            font-size: 1em;
+            width: 100%;
+        }
+
+        /* Кнопка входа */
+        .login-form button {
+            padding: 0.8em;
+            font-size: 1em;
+            color: #ffffff;
+            background-color: #2d6a4f;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .login-form button:hover {
+            background-color: #1b4332;
+        }
+
+        /* Сообщения об ошибках */
+        .errorlist {
+            color: #d9534f;
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .alert {
+            color: #d9534f;
+            background-color: #f2dede;
+            border: 1px solid #ebccd1;
+            padding: 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h2>Вход</h2>
+
+        <!-- Сообщение об ошибке, если оно есть -->
+        {% if messages %}
+            <div class="alert">
+                {% for message in messages %}
+                    <p>{{ message }}</p>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        <!-- Форма логина -->
+        <form method="post" class="login-form">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="{{ form.email.id_for_label }}">{{ form.email.label }}</label>
+                {{ form.email }}
+                {% if form.email.errors %}
+                    <ul class="errorlist">
+                        {% for error in form.email.errors %}
+                            <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </div>
+
+            <div class="form-group">
+                <label for="{{ form.password.id_for_label }}">{{ form.password.label }}</label>
+                {{ form.password }}
+                {% if form.password.errors %}
+                    <ul class="errorlist">
+                        {% for error in form.password.errors %}
+                            <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </div>
+
+            <button type="submit">Войти</button>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Результаты</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>Результаты отбора кандидатов</h1>
+        {% if candidates %}
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Имя</th>
+                        <th>Возраст</th>
+                        <th>Образование</th>
+                        <th>Телефон</th>
+                        <th>Город</th>
+                        <th>Опыт работы</th>
+                        <th>Фото</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for candidate in candidates %}
+                        <tr>
+                            <td>{{ candidate.full_name }}</td>
+                            <td>{{ candidate.age }}</td>
+                            <td>{{ candidate.education }}</td>
+                            <td>{{ candidate.phone }}</td>
+                            <td>{{ candidate.city }}</td>
+                            <td>{{ candidate.experience }}</td>
+                            <td><img src="{{ candidate.photo }}" alt="Фото" width="50"></td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>Подходящих кандидатов не найдено.</p>
+        {% endif %}
+    </div>
+        <!-- Подключение Bootstrap и jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>
